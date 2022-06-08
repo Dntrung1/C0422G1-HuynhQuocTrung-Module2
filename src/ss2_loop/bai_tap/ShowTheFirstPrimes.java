@@ -2,7 +2,7 @@ package ss2_loop.bai_tap;
 
 import java.util.Scanner;
 
-public class HienThiSntDauTien {
+public class ShowTheFirstPrimes {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Nhập số lượng snt đầu tiền cần tìm");

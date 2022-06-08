@@ -2,7 +2,7 @@ package ss2_loop.bai_tap;
 
 import java.util.Scanner;
 
-public class HienThiCacSntNhoHonN {
+public class DisplayPrimeNumbers {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Nhập số lớn nhất");
