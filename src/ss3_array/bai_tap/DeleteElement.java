@@ -3,7 +3,7 @@ package ss3_array.bai_tap;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class DeleteElemen {
+public class DeleteElement {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Nhập độ dài của mảng");
