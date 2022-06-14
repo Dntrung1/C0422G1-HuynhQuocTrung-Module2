@@ -20,14 +20,14 @@ public class Point3D extends Point2D {
     }
 
     public void setXYZ(float x, float y, float z) {
-        this.x = x;
-        this.y = y;
+        super.setX(x);
+        super.setY(y);
         this.z = z;
     }
     public float[] getXYZ(){
         float[]arr1= new float[3];
-        arr1[0] = super.x;
-        arr1[1] = super.y;
+        arr1[0] = super.getX();
+        arr1[1] = super.getY();
         arr1[2] = this.z;
         return arr1;
     }
@@ -35,8 +35,8 @@ public class Point3D extends Point2D {
     @Override
     public String toString() {
         return "Point3D{" +
-                "x=" + x +
-                ", y=" + y +
+                "x=" + super.getX() +
+                ", y=" + super.getY() +
                 ", z=" + z +
                 '}';
     }
