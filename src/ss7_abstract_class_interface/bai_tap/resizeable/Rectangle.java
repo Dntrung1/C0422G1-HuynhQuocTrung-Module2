@@ -1,8 +1,8 @@
-package ss6_inheritance_and_polymophin.thuc_hanh.system_object;
+package ss7_abstract_class_interface.bai_tap.resizeable;
 
-import ss7_abstract_class_interface.bai_tap.resizeable.Resizeable;
+import ss6_inheritance_and_polymophin.thuc_hanh.system_object.Shape;
 
-public class Rectangle extends Shape{
+public class Rectangle extends Shape implements Resizeable{
     private double width=1.0;
     private double height=1.0;
 
@@ -45,5 +45,11 @@ public class Rectangle extends Shape{
                 ", color='" + color + '\'' +
                 ", filled=" + filled +
                 '}';
+    }
+
+    @Override
+    public void resize(double percent) {
+        height+=(height*percent/100);
+        width+=(width*percent/100);
     }
 }

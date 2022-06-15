@@ -1,6 +1,8 @@
-package ss6_inheritance_and_polymophin.thuc_hanh.system_object;
+package ss7_abstract_class_interface.bai_tap.resizeable;
 
-public class Square extends Shape{
+import ss6_inheritance_and_polymophin.thuc_hanh.system_object.Shape;
+
+public class Square extends Shape implements Resizeable {
     private double side = 1.0;
 
     public Square() {
@@ -32,5 +34,10 @@ public class Square extends Shape{
                 ", filled=" + filled +
                 ", side=" + side +
                 '}';
+    }
+
+    @Override
+    public void resize(double percent) {
+        side+=(side*percent)/100;
     }
 }
