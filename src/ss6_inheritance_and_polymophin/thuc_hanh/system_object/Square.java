@@ -1,10 +1,9 @@
-package ss7_abstract_class_interface.bai_tap.resizeable;
+package ss6_inheritance_and_polymophin.thuc_hanh.system_object;
 
-import ss6_inheritance_and_polymophin.thuc_hanh.system_object.Shape;
+import ss7_abstract_class_interface.bai_tap.colorable.Colorable;
 
-public class Square extends Shape implements Resizeable {
+public class Square extends Shape{
     private double side = 1.0;
-
     public Square() {
     }
 
@@ -36,8 +35,4 @@ public class Square extends Shape implements Resizeable {
                 '}';
     }
 
-    @Override
-    public void resize(double length) {
-        side+=length;
-    }
 }

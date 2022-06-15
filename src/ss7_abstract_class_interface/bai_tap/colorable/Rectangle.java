@@ -1,10 +1,11 @@
-package ss7_abstract_class_interface.bai_tap.resizeable;
+package ss7_abstract_class_interface.bai_tap.colorable;
 
 import ss6_inheritance_and_polymophin.thuc_hanh.system_object.Shape;
+import ss7_abstract_class_interface.bai_tap.resizeable.Resizeable;
 
-public class Rectangle extends Shape implements Resizeable{
-    private double width=1.0;
-    private double height=1.0;
+public class Rectangle extends Shape implements Resizeable {
+    private double width = 1.0;
+    private double height = 1.0;
 
     public Rectangle() {
     }
@@ -30,11 +31,13 @@ public class Rectangle extends Shape implements Resizeable{
     public void setHeight(double height) {
         this.height = height;
     }
-    public double getArea(){
-        return this.width*this.height;
+
+    public double getArea() {
+        return this.width * this.height;
     }
-    public double getPerimeter(){
-        return (this.height+this.width)*2;
+
+    public double getPerimeter() {
+        return (this.height + this.width) * 2;
     }
 
     @Override
@@ -48,8 +51,9 @@ public class Rectangle extends Shape implements Resizeable{
     }
 
     @Override
-    public void resize(double length) {
-        height+=length;
-        width+=length;
+    public void resize(double percent) {
+        height += percent;
+        width += percent;
     }
+
 }

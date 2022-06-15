@@ -1,6 +1,6 @@
 package ss6_inheritance_and_polymophin.thuc_hanh.system_object;
 
-public class Shape {
+public abstract class Shape {
     protected String color = "green";
     protected boolean filled = true;
 
@@ -27,7 +27,7 @@ public class Shape {
     public void setFilled(boolean filled) {
         this.filled = filled;
     }
-
+    public abstract double getArea();
     @Override
     public String toString() {
         return "Shape{" +

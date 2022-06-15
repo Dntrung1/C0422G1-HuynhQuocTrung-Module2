@@ -36,7 +36,7 @@ public class Circle extends Shape implements Resizeable {
     }
 
     @Override
-    public void resize(double percent) {
-       radius+=(radius*percent)/100;
+    public void resize(double length) {
+       radius+=length;
     }
 }
