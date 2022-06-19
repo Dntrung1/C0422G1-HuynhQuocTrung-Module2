@@ -1,5 +1,9 @@
 package case_study.controller;
 
+import case_study.model.Car;
+import case_study.model.Motorcycle;
+import case_study.model.Truck;
+import case_study.model.Vehicle;
 import case_study.service.ICarService;
 import case_study.service.IMotorcycleSevrice;
 import case_study.service.ITruckService;
@@ -7,6 +11,7 @@ import case_study.service.impl.CarService;
 import case_study.service.impl.MotorcrycleService;
 import case_study.service.impl.TruckService;
 
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Option {
@@ -22,34 +27,32 @@ public class Option {
                     "\n 1.Display" +
                     "\n 2. Add" +
                     "\n 3.Delete" +
-                    "\n 4. Edit" +
-                    "\n 5. Search" +
-                    "\n 6. Exit");
+                    "\n 4. Search" +
+                    "\n 5. Exit");
             System.out.println("Chọn chức năng");
             int choose = Integer.parseInt(scanner.nextLine());
             switch (choose) {
                 case 1:
-                    System.out.println("Chức năng hiển thị");
                     boolean flag1 = true;
                     do {
                         System.out.println("lựa chọn" +
-                                "\n 1. Quản lý ô tô" +
-                                "\n 2. QUản lý xe tải" +
-                                "\n 3. Quản lý xe máy" +
-                                "\n 0. Exit");
-                        System.out.println("Chọn quản lý");
+                                "\n 1. Hiển thị ô tô" +
+                                "\n 2. Hiển thị xe tải" +
+                                "\n 3. Hiển thị xe máy" +
+                                "\n 0. Quay về chức năng của hệ thống");
+                        System.out.println("Chọn danh sách hiển thị");
                         int choise = Integer.parseInt(scanner.nextLine());
                         switch (choise) {
                             case 1:
-                                System.out.println("Hiển thị Ô tô");
+                                System.out.println("Danh sách Ô tô");
                                 carService.display();
                                 break;
                             case 2:
-                                System.out.println("Hiển thị xe tải");
+                                System.out.println("Danh sách xe tải");
                                 truckService.display();
                                 break;
                             case 3:
-                                System.out.println("Hiển thị xe máy");
+                                System.out.println("Danh sách xe máy");
                                 motorcycleSevrice.display();
                                 break;
                             case 0:
@@ -60,14 +63,13 @@ public class Option {
                     } while (flag1);
                     break;
                 case 2:
-                    System.out.println("Chứ năng thêm vào");
                     boolean flag2 = true;
                     do {
                         System.out.println("lựa chọn" +
-                                "\n 1. Quản lý ô tô" +
-                                "\n 2. QUản lý xe tải" +
-                                "\n 3. Quản lý xe máy" +
-                                "\n 0. Exit");
+                                "\n 1. Thêm ô tô" +
+                                "\n 2. Thêm xe tải" +
+                                "\n 3. Thêm xe máy" +
+                                "\n 0. Quay về chức năng của hệ thống");
                         System.out.println("Chọn quản lý");
                         int choise = Integer.parseInt(scanner.nextLine());
                         switch (choise) {
@@ -94,6 +96,49 @@ public class Option {
                     System.out.println("Chức năng xóa");
                     System.out.println("Nhập biển số xe");
                     int numberOfControl = Integer.parseInt(scanner.nextLine());
+                    int confirm;
+
+                    Car carDelete = (Car) carService.findByNumber(numberOfControl);
+                    Truck truckDelete = (Truck) truckService.findByNumber(numberOfControl);
+                    Motorcycle motorcycleDelete = (Motorcycle) motorcycleSevrice.findByNumber(numberOfControl);
+
+
+                    if (carDelete != null) {
+                        System.out.println("Xác nhận xóa? " + carDelete);
+                        System.out.println("1. Yes");
+                        System.out.println("2. No");
+                        confirm = Integer.parseInt(scanner.nextLine());
+                        if (confirm == 1) {
+                            carService.remove(numberOfControl);
+                            System.out.println("Xóa thành công.");
+                        } else {
+                            displayMenu();
+                        }
+                    } else if (truckDelete != null) {
+                        System.out.println("Xác nhận xóa? " + truckDelete);
+                        System.out.println("1. Yes");
+                        System.out.println("2. No");
+                        confirm = Integer.parseInt(scanner.nextLine());
+                        if (confirm == 1) {
+                            truckService.remove(numberOfControl);
+                            System.out.println("Xóa thành công.");
+                        } else {
+                            displayMenu();
+                        }
+                    } else if (motorcycleDelete != null){
+                        System.out.println("Xác nhận xóa? " + motorcycleDelete);
+                        System.out.println("1. Yes");
+                        System.out.println("2. No");
+                        confirm = Integer.parseInt(scanner.nextLine());
+                        if (confirm == 1) {
+                            motorcycleSevrice.remove(numberOfControl);
+                            System.out.println("Xóa thành công.");
+                        } else {
+                            displayMenu();
+                        }
+                    } else {
+                        System.out.println("Ko tìm thấy.");
+                    }
                     break;
                 case 4:
                     System.out.println("Chức năng chỉnh sửa");

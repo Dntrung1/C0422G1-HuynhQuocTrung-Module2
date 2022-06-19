@@ -41,5 +41,31 @@ public class MotorcrycleService implements IMotorcycleSevrice {
         display();
     }
 
+    /**
+     * Cách 2
+     */
+    @Override
+    public boolean remove(int controlNumber) {
+        for (Motorcycle m: motorcycleArrayList) {
+            if (m.getSeaOfControl() == controlNumber) {
+                motorcycleArrayList.remove(m);
+                return true;
+            }
+        }
+        return false;
+    }
 
+    @Override
+    public Motorcycle findByNumber(int number) {
+        for (Motorcycle m: motorcycleArrayList) {
+            if (m.getSeaOfControl() == number) {
+                return m;
+            }
+        }
+        return null;
+    }
+
+    public static ArrayList<Motorcycle> getList() {
+        return motorcycleArrayList;
+    }
 }

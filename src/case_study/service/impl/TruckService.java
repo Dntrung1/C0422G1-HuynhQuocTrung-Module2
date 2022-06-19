@@ -1,6 +1,8 @@
 package case_study.service.impl;
 
 import case_study.controller.Option;
+import case_study.model.Car;
+import case_study.model.Motorcycle;
 import case_study.model.Producer;
 import case_study.model.Truck;
 import case_study.service.ITruckService;
@@ -41,6 +43,27 @@ public class TruckService implements ITruckService {
         int tonnage = Integer.parseInt(scanner.nextLine());
         truckArrayList.add(new Truck(seaOfControl, producer, year, owner, tonnage));
         display();
+    }
+
+    @Override
+    public boolean remove(int controlNumber) {
+        for (Truck t: truckArrayList) {
+            if (t.getSeaOfControl() == controlNumber) {
+                truckArrayList.remove(t);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public Truck findByNumber(int number) {
+        for (Truck m: truckArrayList) {
+            if (m.getSeaOfControl() == number) {
+                return m;
+            }
+        }
+        return null;
     }
 }
 
