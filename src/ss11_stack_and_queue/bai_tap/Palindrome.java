@@ -1,4 +1,4 @@
-package ss1_stack_and_queue.bai_tap;
+package ss11_stack_and_queue.bai_tap;
 
 import java.util.*;
 
