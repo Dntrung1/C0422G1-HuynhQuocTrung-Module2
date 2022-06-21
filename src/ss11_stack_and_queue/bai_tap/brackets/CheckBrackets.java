@@ -21,7 +21,7 @@ public class CheckBrackets {
                 }else {
                     left = String.valueOf(bStack.pop());
                 }
-                if(left != "("){
+                if(!left.equals("(")){
                     return false;
                 }
             }
