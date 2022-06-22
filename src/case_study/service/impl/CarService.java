@@ -16,6 +16,8 @@ public class CarService implements ICarService {
         carArrayList.add(new Car(20,ProducerDTO.producers.get(1),2022,"Thảo",5,"xe đua"));
         carArrayList.add(new Car(30,ProducerDTO.producers.get(2),2022,"Bò",5,"Xe ăn cắp"));
     }
+
+
     @Override
     public void display() {
         for (Car c: carArrayList) {

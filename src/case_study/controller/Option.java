@@ -87,8 +87,6 @@ public class Option {
                                 break;
                             case 0:
                                 displayMenu();
-                            default:
-                                flag2 = false;
                         }
                     } while (flag2);
                     break;
