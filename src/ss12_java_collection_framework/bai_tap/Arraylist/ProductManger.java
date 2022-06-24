@@ -4,35 +4,36 @@ import java.util.*;
 
 public class ProductManger {
     Scanner scanner = new Scanner(System.in);
-   private static ArrayList<Product> productArrayList = new ArrayList<>();
-   static {
-       productArrayList.add(new Product(1,"trung",3000));
-       productArrayList.add(new Product(2,"rung",9000));
-       productArrayList.add(new Product(3,"ung",6000));
-   }
+    private static ArrayList<Product> productArrayList = new ArrayList<>();
 
-   public void display(){
-       for (Product p: productArrayList) {
-           System.out.println(p);
-       }
-   }
+    static {
+        productArrayList.add(new Product(1, "trung", 3000));
+        productArrayList.add(new Product(2, "rung", 9000));
+        productArrayList.add(new Product(3, "ung", 6000));
+    }
 
-    public void add(){
+    public void display() {
+        for (Product p : productArrayList) {
+            System.out.println(p);
+        }
+    }
+
+    public void add() {
         System.out.println("Nhập id");
         int id = Integer.parseInt(scanner.nextLine());
         System.out.println("NHập tên sản phẩm");
         String name = scanner.nextLine();
         System.out.println("Nhập giá");
         double price = Double.parseDouble(scanner.nextLine());
-        productArrayList.add(new Product(id,name,price));
+        productArrayList.add(new Product(id, name, price));
     }
 
-    public void edit(){
+    public void editById() {
         System.out.println("Nhập id cần sửa");
         int idEdit = Integer.parseInt(scanner.nextLine());
         int i = 0;
         for (; i < productArrayList.size(); i++) {
-            if (idEdit==productArrayList.get(i).getId()){
+            if (idEdit == productArrayList.get(i).getId()) {
                 System.out.println("Nhập lại tên");
                 productArrayList.get(i).setName(scanner.nextLine());
                 System.out.println("Nhập lại giá");
@@ -44,40 +45,33 @@ public class ProductManger {
 
     }
 
-    public void remove(){
+    public void removeById() {
         System.out.println("NHập id cần xóa");
         int idDelete = Integer.parseInt(scanner.nextLine());
         for (int i = 0; i < productArrayList.size(); i++) {
-            if (idDelete == productArrayList.get(i).getId()){
+            if (idDelete == productArrayList.get(i).getId()) {
                 productArrayList.remove(i);
             }
         }
     }
 
-    public void search(){
+    public void searchByName() {
         System.out.println("Nhập tên sản phẩm cần tìm kiếm");
         String searchName = scanner.nextLine();
         for (int i = 0; i < productArrayList.size(); i++) {
-            if (searchName.equals(productArrayList.get(i).getName())){
+            if (searchName.equals(productArrayList.get(i).getName())) {
                 System.out.println(productArrayList.get(i));
             }
         }
     }
 
-    public void sort(){
-       Collections.sort(productArrayList);
-//       productArrayList.sort(Comparator.naturalOrder());
+    public void sortUpAscending() {
+        Collections.sort(productArrayList);
     }
+
+
     public static void main(String[] args) {
         ProductManger productManger = new ProductManger();
         productManger.display();
-//        productManger.remove();
-//        productManger.display();
-//        productManger.search  ();
-//        productManger.sort();
-//        productManger.display();
-        productManger.edit();
-        productManger.display();
-
     }
 }

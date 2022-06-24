@@ -1,4 +1,4 @@
-package ss14_sort;
+package ss14_sort.bai_tap;
 
 import java.util.Arrays;
 import java.util.Scanner;
