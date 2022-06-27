@@ -31,7 +31,7 @@ public class Car extends Vehicle {
     public String toString() {
         return "Car{" +
                 "seaOfControl=" + seaOfControl +
-                ", producer=" + producer +
+                ", producer=" + producer.getPlu() +
                 ", numberOfSeat=" + numberOfSeat +
                 ", year=" + year +
                 ", owner='" + owner + '\'' +

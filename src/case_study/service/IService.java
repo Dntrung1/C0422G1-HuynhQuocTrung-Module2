@@ -7,5 +7,5 @@ public interface IService {
     void add();
     boolean remove(int controlNumber);
     Vehicle findByNumber(int number);
-    Vehicle searchControll(int number);
+//    Vehicle searchControll(int number);
 }
