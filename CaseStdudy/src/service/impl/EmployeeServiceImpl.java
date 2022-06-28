@@ -11,12 +11,6 @@ public class EmployeeServiceImpl implements EmployeeService {
     Scanner scanner = new Scanner(System.in);
     public static ArrayList<Employee> employees = new ArrayList<>();
 
-    static {
-        employees.add(new Employee("Trung", LocalDate.parse("1999-10-08"), "Nam", "123456789", "0935819632", "dntrung1@gmail.com", "1", "Trung cấp", "Giám đốc", 5));
-        employees.add(new Employee("Trung1", LocalDate.parse("1999-12-13"), "Nam", "124356789", "0935112832", "dntrung2@gmail.com", "2", "Cao đẳng", "Quản lý", 1));
-        employees.add(new Employee("Trung2", LocalDate.parse("1999-12-16"), "Nam", "1234789", "09358824632", "dntrung3@gmail.com", "abc", "Đại học", "Phục vụ", 3));
-    }
-
     @Override
     public void display() {
         for (Employee e : employees) {
@@ -120,15 +114,15 @@ public class EmployeeServiceImpl implements EmployeeService {
     public void edit() {
     }
 
-    public boolean checkIdEmployee(String id) {
-        for (int i = 0; i < employees.size(); i++) {
-            if (employees.get(i).getId().equals(id)) {
-                System.out.println("Sô CMND của : " + employees.get(i).getName());
-                return false;
-            }
-        }
-        return true;
-    }
+//    public boolean checkIdEmployee(String id) {
+//        for (int i = 0; i < employees.size(); i++) {
+//            if (employees.get(i).getId().equals(id)) {
+//                System.out.println("Sô CMND của : " + employees.get(i).getName());
+//                return false;
+//            }
+//        }
+//        return true;
+//    }
 
     public boolean checkEmployeeCode(String code) {
         for (int i = 0; i < employees.size(); i++) {

@@ -3,7 +3,7 @@ package model.Person;
 import java.time.LocalDate;
 import java.util.Objects;
 
-public class Employee extends Person{
+public class Employee extends Person {
     private String employeeCode;
     private String level;
     private String position;
@@ -61,6 +61,7 @@ public class Employee extends Person{
         return Objects.equals(employeeCode, employee.employeeCode);
     }
 
+
     @Override
     public int hashCode() {
         return Objects.hash(employeeCode);
@@ -81,4 +82,6 @@ public class Employee extends Person{
                 ", email='" + email + '\'' +
                 '}';
     }
+
+
 }

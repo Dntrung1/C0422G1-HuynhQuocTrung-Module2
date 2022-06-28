@@ -8,6 +8,6 @@ public class RunTest {
         System.out.println("Nhập chuỗi cho source file ");
         String sourceFile = scanner.nextLine();
         WriteFile1.writeFile1(sourceFile,true);
-        ReadAndWrite.writeFile2(ReadAndWrite.readFile1(),true);
+        ReadAndWrite.writeFile2(ReadAndWrite.readFile1(),false);
     }
 }

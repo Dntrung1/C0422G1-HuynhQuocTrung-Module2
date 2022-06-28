@@ -7,7 +7,6 @@ import java.util.List;
 
 public class Run {
    public static void display(){
-       List<Nation> nationList = new ArrayList<>();
        for (int i = 0; i < ReadFileNation.readNationFile().size(); i++) {
            System.out.println(ReadFileNation.readNationFile().get(i).toString());
        }

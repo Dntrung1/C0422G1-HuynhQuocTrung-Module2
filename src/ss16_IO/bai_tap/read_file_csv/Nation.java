@@ -22,4 +22,9 @@ public class Nation {
                 ", name='" + name + '\'' +
                 '}';
     }
+    public String print(){
+        return this.id + "," + this.code +","+this.name;
+    }
+
+
 }
