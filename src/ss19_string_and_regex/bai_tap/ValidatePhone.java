@@ -20,4 +20,5 @@ public class ValidatePhone {
         String regexPhoneVN = "^(\\+84|0)[\\s]*[0-9]{9}$";
         return phone.matches(regexPhoneVN);
     }
+
 }

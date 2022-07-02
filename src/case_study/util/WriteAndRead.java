@@ -1,7 +1,6 @@
 package case_study.util;
 
 import case_study.model.Car;
-import case_study.model.Motorcycle;
 import case_study.model.Producer;
 
 import java.io.*;
@@ -26,11 +25,6 @@ public class WriteAndRead {
         }
     }
 
-//    public static void main(String[] args) {
-//        List<Motorcycle> cars = new ArrayList<>();
-//        writeToCSV(cars, "src/case_study/util/S.csv", true);
-//    }
-
     public static List<Car> readFileCSV(String pathFile){
         List<Car> eList = new ArrayList<>();
         File file = new File(pathFile);
@@ -43,7 +37,6 @@ public class WriteAndRead {
             bufferedReader = new BufferedReader(fileReader);
             while ((line=bufferedReader.readLine())!=null){
                 arr = line.split(",");
-//                Producer producer= find(arr[1]);
                 Car car = new Car(Integer.parseInt(arr[0]),new Producer(Integer.parseInt(arr[0]),arr[1],arr[2]),Integer.parseInt(arr[2]),arr[3],Integer.parseInt(arr[4]),arr[5]);
 
             }
