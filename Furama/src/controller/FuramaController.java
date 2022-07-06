@@ -36,7 +36,6 @@ public class FuramaController {
                     flag = false;
                     break;
                 default:
-                    flag = true;
                     System.err.println("Nhập lại");
             }
         } while (flag);

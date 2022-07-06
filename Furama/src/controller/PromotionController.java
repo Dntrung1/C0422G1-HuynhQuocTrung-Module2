@@ -21,10 +21,8 @@ public class PromotionController {
                     System.out.println("Display list customers get voucher");
                     break;
                 case "3":
-                    System.out.println("Return main menu");
-                    break;
+                   return;
                 default:
-                    flag = true;
                     System.err.println("Nhập lại");
             }
         } while (flag);

@@ -1,8 +1,13 @@
 package controller;
 
+import service.FacilityService;
+import service.impl.FacilityServiceImpl;
+
 import java.util.Scanner;
 
-public class FacilityController {
+public class
+FacilityController {
+    private static FacilityService facilityService = new FacilityServiceImpl();
     public static void displayFacility() {
         Scanner scanner = new Scanner(System.in);
         boolean flag = true;
@@ -17,18 +22,19 @@ public class FacilityController {
             switch (chosse) {
                 case "1":
                     System.out.println("Display list Facility Management");
+                    facilityService.display();
                     break;
                 case "2":
                     System.out.println("Add new Facility");
+                    facilityService.add();
                     break;
                 case "3":
                     System.out.println("Display list facility maintenance");
+                    facilityService.displayListFacilityMaintenance();
                     break;
                 case "4":
-                    System.out.println("Return main menu");
-                    break;
+                    return;
                 default:
-                    flag = true;
                     System.err.println("Nhập lại");
             }
         } while (flag);

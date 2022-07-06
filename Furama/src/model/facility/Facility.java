@@ -6,16 +6,18 @@ public class Facility {
     protected double chiPhiThue;
     protected byte soLuongNguoiToiDa;
     protected String kieuThue;
+    protected String maDichVu;
 
     public Facility() {
     }
 
-    public Facility(String tenDichVu, double dienTichSuDung, double chiPhiThue, byte soLuongNguoiToiDa, String kieuThue) {
+    public Facility(String tenDichVu, double dienTichSuDung, double chiPhiThue, byte soLuongNguoiToiDa, String kieuThue,String maDichVu) {
         this.tenDichVu = tenDichVu;
         this.dienTichSuDung = dienTichSuDung;
         this.chiPhiThue = chiPhiThue;
         this.soLuongNguoiToiDa = soLuongNguoiToiDa;
         this.kieuThue = kieuThue;
+        this.maDichVu = maDichVu;
     }
 
     public String getTenDichVu() {
@@ -58,6 +60,14 @@ public class Facility {
         this.kieuThue = kieuThue;
     }
 
+    public String getMaDichVu() {
+        return maDichVu;
+    }
+
+    public void setMaDichVu(String maDichVu) {
+        this.maDichVu = maDichVu;
+    }
+
     @Override
     public String toString() {
         return "Facility{" +
@@ -66,7 +76,12 @@ public class Facility {
                 ", chiPhiThue=" + chiPhiThue +
                 ", soLuongNguoiToiDa=" + soLuongNguoiToiDa +
                 ", kieuThue='" + kieuThue + '\'' +
+                ", maDichVu='" + maDichVu + '\'' +
                 '}';
+    }
+
+    public String toCSV(){
+        return tenDichVu +","+ dienTichSuDung +","+ chiPhiThue +","+ soLuongNguoiToiDa +","+ kieuThue +","+maDichVu;
     }
 }
 

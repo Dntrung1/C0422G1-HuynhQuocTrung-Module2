@@ -1,8 +1,9 @@
 package model.other;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
-public class Booking {
+public class Booking implements Comparable<Booking> {
     private String maBooking;
     private LocalDate ngayDen;
     private LocalDate ngayDI;
@@ -80,5 +81,31 @@ public class Booking {
                 ", tenDichVu='" + tenDichVu + '\'' +
                 ", loaiDichVu='" + loaiDichVu + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Booking booking = (Booking) o;
+        return Objects.equals(maBooking, booking.maBooking) && Objects.equals(maKhachHang, booking.maKhachHang);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(maBooking, maKhachHang);
+    }
+
+    @Override
+    public int compareTo(Booking o) {
+        if (this.ngayDen.compareTo(o.ngayDen) > 0) {
+            return 1;
+        } else if (this.ngayDen.compareTo(o.ngayDen) < 0) {
+            return -1;
+        } else return this.getNgayDI().compareTo(o.getNgayDI());
+    }
+
+    public String toCSV() {
+        return maBooking + "," + ngayDen + "," + ngayDI + "," + maKhachHang + "," + tenDichVu +"," + loaiDichVu;
     }
 }

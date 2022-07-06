@@ -44,7 +44,7 @@ public class Customer extends Person{
 
     @Override
     public String toString() {
-        return "Customer{" +
+        return "{" +
                 "maKhachHang='" + maKhachHang + '\'' +
                 ", name='" + name + '\'' +
                 ", ngaySinh=" + ngaySinh +
@@ -55,5 +55,8 @@ public class Customer extends Person{
                 ", loaiKhach='" + loaiKhach + '\'' +
                 ", diaChi='" + diaChi + '\'' +
                 '}';
+    }
+    public String toCSV(){
+        return name +","+ ngaySinh +","+ gioiTinh +","+ cMND  +","+ phone +","+ email +","+ maKhachHang +","+ loaiKhach +","+ diaChi;
     }
 }

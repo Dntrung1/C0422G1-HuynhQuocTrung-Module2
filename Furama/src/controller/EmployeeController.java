@@ -6,7 +6,7 @@ import service.impl.EmployeeServiceImpl;
 import java.util.Scanner;
 
 public class EmployeeController {
-    public static EmployeeService employeeService = new EmployeeServiceImpl();
+    private static EmployeeService employeeService = new EmployeeServiceImpl();
     public static void displayEmployee() {
         Scanner scanner = new Scanner(System.in);
         boolean flag = true;
@@ -33,10 +33,8 @@ public class EmployeeController {
                     break;
                 case "4":
                     System.out.println("Return main menu");
-                    FuramaController.displayMenu();
-                    break;
+                    return;
                 default:
-                    flag = true;
                     System.err.println("Nhập lại");
             }
         } while (flag);

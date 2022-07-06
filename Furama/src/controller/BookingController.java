@@ -1,8 +1,12 @@
 package controller;
 
+import service.BookingService;
+import service.impl.BookingServiceImpl;
+
 import java.util.Scanner;
 
 public class BookingController {
+    private static BookingService bookingService = new BookingServiceImpl();
     public static void displayBooking() {
         Scanner scanner = new Scanner(System.in);
         boolean flag = true;
@@ -19,9 +23,11 @@ public class BookingController {
             switch (chosse) {
                 case "1":
                     System.out.println("Add new booking");
+                    bookingService.addBooking();
                     break;
                 case "2":
                     System.out.println("Display list booking");
+                    bookingService.displayBooking();
                     break;
                 case "3":
                     System.out.println("Create new constracts");
@@ -33,10 +39,8 @@ public class BookingController {
                     System.out.println("Edit contracts");
                     break;
                 case "6":
-                    System.out.println("Return main menu");
-                    break;
+                    return;
                 default:
-                    flag = true;
                     System.err.println("Nhập lại");
             }
         } while (flag);

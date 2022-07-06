@@ -1,8 +1,12 @@
 package controller;
 
+import service.CustomerService;
+import service.impl.CustomerServiceImpl;
+
 import java.util.Scanner;
 
 public class CustomerController {
+    private static CustomerService customerService = new CustomerServiceImpl();
     public static void displayCustomer() {
         Scanner scanner = new Scanner(System.in);
         boolean flag = true;
@@ -17,15 +21,19 @@ public class CustomerController {
             switch (chosse) {
                 case "1":
                     System.out.println("Display list customers");
+                    customerService.display();
                     break;
                 case "2":
                     System.out.println("Add new customer");
+                    customerService.add();
                     break;
                 case "3":
                     System.out.println("Edit customer");
+                    customerService.edit();
                     break;
                 case "4":
                     System.out.println("Return main menu");
+                    FuramaController.displayMenu();
                     break;
                 default:
                     flag = true;

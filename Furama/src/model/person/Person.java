@@ -46,11 +46,11 @@ public class Person {
         this.gioiTinh = gioiTinh;
     }
 
-    public String getcMND() {
+    public String getCMND() {
         return cMND;
     }
 
-    public void setcMND(String cMND) {
+    public void setCMND(String cMND) {
         this.cMND = cMND;
     }
 

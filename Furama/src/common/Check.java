@@ -24,7 +24,21 @@ public class Check {
     }
 
     public static boolean checkCMND(String cMND){
-        String regexCMND = "^\\d{5}$";
+        String regexCMND = "^\\d{9}$";
         return cMND.matches(regexCMND);
+    }
+
+    public static boolean checkMaDichVuRoom(String maDichVu){
+        String regexMaDichVuRoom = "^SVRO-\\d{4}$";
+        return maDichVu.matches(regexMaDichVuRoom);
+    }
+
+    public static boolean checkMaDichVuHouse(String maDichVu){
+        String regexMaDichVuHouse = "^SVHO-\\d{4}$";
+        return maDichVu.matches(regexMaDichVuHouse);
+    }
+    public static boolean checkMaDichVuVilla(String maDichVu){
+        String regexMaDichVuVilla = "^SVVL-\\d{4}$";
+        return maDichVu.matches(regexMaDichVuVilla);
     }
 }

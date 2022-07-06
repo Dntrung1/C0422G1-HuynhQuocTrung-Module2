@@ -1,11 +1,15 @@
 package service.impl;
 
+import common.CMND;
 import common.Check;
+import controller.EmployeeController;
+import controller.FuramaController;
 import model.person.Employee;
 import service.EmployeeService;
 import until.ReaAndWriteEmployee;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -23,7 +27,7 @@ public class EmployeeServiceImpl implements EmployeeService {
             if (employeeList.get(i).getMaNhanVien().equals(maNhanVien)) {
                 boolean flag = true;
                 do {
-                    System.out.println("Chọn thông tin cần chỉnh sữa +" +
+                    System.out.println("Chọn thông tin cần chỉnh sữa " +
                             "\n 1. Tên" +
                             "\n 2. Ngày sinh" +
                             "\n 3. Giới tính" +
@@ -40,13 +44,11 @@ public class EmployeeServiceImpl implements EmployeeService {
                             System.out.println("Nhập tên mới");
                             String name = scanner.nextLine();
                             employeeList.get(i).setName(name);
-                            flag = false;
                             break;
                         case "2":
                             System.out.println("Nhập ngày sinh mới");
-                            LocalDate ngaySinh = LocalDate.parse(scanner.nextLine());
+                            LocalDate ngaySinh = LocalDate.parse(scanner.nextLine(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
                             employeeList.get(i).setNgaySinh(ngaySinh);
-                            flag = false;
                             break;
                         case "3":
                             System.out.println("Chọn lại giới tính");
@@ -70,7 +72,6 @@ public class EmployeeServiceImpl implements EmployeeService {
                                 }
                             } while (flag1);
                             employeeList.get(i).setGioiTinh(gioiTinh);
-                            flag = false;
                             break;
                         case "4":
                             String cMND;
@@ -78,14 +79,13 @@ public class EmployeeServiceImpl implements EmployeeService {
                                 do {
                                     System.out.println("Nhập lại chứng minh nhân dân");
                                     cMND = scanner.nextLine();
-                                    if (Check.checkCMND(cMND)) {
+                                    if (CMND.checkId(cMND)) {
                                         break;
                                     }
                                     System.out.println("Không hợp lệ");
                                 } while (true);
-                            } while (checkCMND(cMND));
-                            employeeList.get(i).setcMND(cMND);
-                            flag = false;
+                            } while (CMND.checkId(cMND));
+                            employeeList.get(i).setCMND(cMND);
                             break;
                         case "5":
                             String phone;
@@ -98,7 +98,6 @@ public class EmployeeServiceImpl implements EmployeeService {
                                 System.out.println("Không hợp lệ");
                             } while (true);
                             employeeList.get(i).setPhone(phone);
-                            flag = false;
                             break;
                         case "6":
                             String email;
@@ -111,7 +110,6 @@ public class EmployeeServiceImpl implements EmployeeService {
                                 System.out.println("Không hợp lệ");
                             } while (true);
                             employeeList.get(i).setEmail(email);
-                            flag = false;
                             break;
                         case "7":
                             String trinhDo = null;
@@ -145,7 +143,6 @@ public class EmployeeServiceImpl implements EmployeeService {
                                 }
                             } while (flag2);
                             employeeList.get(i).setTrinhDo(trinhDo);
-                            flag = false;
                             break;
                         case "8":
                             String viTri = null;
@@ -189,14 +186,14 @@ public class EmployeeServiceImpl implements EmployeeService {
                                 }
                             } while (flag3);
                             employeeList.get(i).setViTri(viTri);
-                            flag = false;
                             break;
                         case "9":
                             System.out.println("Nhập lương mới");
                             double luong = Double.parseDouble(scanner.nextLine());
                             employeeList.get(i).setLuong(luong);
-                            flag = false;
                             break;
+                        case "10":
+                            FuramaController.displayMenu();
                         default:
                             flag = true;
                     }
@@ -220,6 +217,33 @@ public class EmployeeServiceImpl implements EmployeeService {
             } while (true);
         } while (checkEmployeeCode(maNhanVien));
 
+        String name;
+        do {
+            System.out.println("Nhập tên");
+            name = scanner.nextLine();
+            if (Check.checkName(name)) {
+                break;
+            }
+            System.out.println("Tên không hợp lệ");
+        } while (true);
+
+        LocalDate ngaySinh = null;
+        boolean flag = true;
+        do {
+            try {
+                System.out.println("Nhập ngày sinh");
+                ngaySinh = LocalDate.parse(scanner.nextLine(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+                if (ngaySinh.until(LocalDate.now()).getYears()<18||ngaySinh.until(LocalDate.now()).getYears()>100){
+                    System.out.println("Nhập lại");
+                    flag= true;
+                }else {
+                    flag = false;
+                }
+            } catch (Exception e) {
+                System.err.println("(yy-mm-dd)");
+                flag = true;
+            }
+        } while (flag);
 
         String gioiTinh = null;
         boolean flag4 = true;
@@ -242,29 +266,6 @@ public class EmployeeServiceImpl implements EmployeeService {
             }
         } while (flag4);
 
-        String name;
-        do {
-            System.out.println("Nhập tên");
-            name = scanner.nextLine();
-            if (Check.checkName(name)) {
-                break;
-            }
-            System.out.println("Tên không hợp lệ");
-        } while (true);
-
-        LocalDate ngaySinh = null;
-        boolean flag = true;
-        do {
-            try {
-                System.out.println("Nhập ngày sinh");
-                ngaySinh = LocalDate.parse(scanner.nextLine());
-                flag = false;
-            } catch (Exception e) {
-                System.out.println("(yy//mm//dd)");
-                flag = true;
-            }
-        } while (flag);
-
         String cMND;
         do {
             do {
@@ -275,7 +276,7 @@ public class EmployeeServiceImpl implements EmployeeService {
                 }
                 System.out.println("Không hợp lệ");
             } while (true);
-        } while (checkCMND(cMND));
+        } while (CMND.checkId(cMND));
 
         String phone;
         do {
@@ -387,16 +388,6 @@ public class EmployeeServiceImpl implements EmployeeService {
         List<Employee> employeeList = ReaAndWriteEmployee.readFileCSV(PATH_FILE);
         for (int i = 0; i < employeeList.size(); i++) {
             if (employeeList.get(i).getMaNhanVien().equals(code)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public boolean checkCMND(String cMND) {
-        List<Employee> employeeList = ReaAndWriteEmployee.readFileCSV(PATH_FILE);
-        for (int i = 0; i < employeeList.size(); i++) {
-            if (employeeList.get(i).getcMND().equals(cMND)) {
                 return true;
             }
         }
